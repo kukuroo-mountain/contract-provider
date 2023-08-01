@@ -1,0 +1,14 @@
+{
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.linting.prospectorEnabled": true,
+    "python.linting.enabled": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.extraPaths": [
+        "./src/contract_provider"
+    ],
+    "files.eol": "\n"
+}

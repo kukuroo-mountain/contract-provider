@@ -1,0 +1,53 @@
+[build-system]
+requires = [
+    "setuptools",
+    "setuptools-scm",
+]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "contract_provider"
+authors = [
+    { name = "Aravind Pai", email = "dragondive@outlook.in" },
+]
+description = "Provider for the Contract Testing Preparation and Demo"
+dependencies = [
+    "pytest",
+    "requests",
+    "pact-python",
+
+    "black",
+    "portray",
+    "prospector[with_everything]",
+    "python-semantic-release",
+    "pyproject-parser",
+]
+dynamic = [
+    "version",
+]
+
+
+[tool.pytest]
+mock_use_standalone_module = true
+ini_options.pythonpath = [
+    "src/contract_provider",
+]
+
+
+[tool.semantic_release]
+version = "0.0.0"
+version_toml = [
+    "pyproject.toml:tool.semantic_release.version",
+]
+branches.main.match = "main"
+
+
+[tool.semantic_release.remote]
+token = { env = "GH_TOKEN" }
+
+
+[tool.portray]
+modules = [
+    "contract_provider",
+]
