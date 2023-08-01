@@ -1,0 +1,27 @@
+name: Verify contract when consumer publishes it to pact broker
+on:
+  repository_dispatch:
+    types: [contract_published]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Setup Python 3.x
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Create a virtual environment
+        run: |
+          python -m pip install --upgrade pip
+          python -m venv env
+          source env/bin/activate
+      - name: Install the package dependencies
+        run: python -m pip install .
+      - name: Run the tests to verify the consumer contract
+        env:
+          PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
+        run: pytest
