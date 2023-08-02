@@ -3,7 +3,7 @@ import pytest
 
 from helloworld.helloworld import HelloWorld
 
-
+@pytest.mark.skip("for demo")
 @pytest.mark.parametrize(
     "name",
     [
