@@ -18,7 +18,7 @@ dependencies = [
     "pact-python",
 
     "black",
-    "portray",
+    # "portray",
     "prospector[with_everything]",
     "python-semantic-release",
     "pyproject-parser",
